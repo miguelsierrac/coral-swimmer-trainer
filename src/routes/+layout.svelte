@@ -5,7 +5,7 @@
 	import { base } from '$app/paths';
 	import { browser } from '$app/environment';
 	import { onMount, setContext } from 'svelte';
-	import { athlete, lastSync, token } from '$lib/stores.js';
+	import { trainer, lastSync, token } from '$lib/stores.js';
 	import { initializeApp } from 'firebase/app';
 	import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 	import { SvelteToast, toast } from '@zerodevx/svelte-toast';
@@ -38,7 +38,7 @@
 
 	setContext('redirect', redirect);
 
-	setContext('athlete', athlete);
+	setContext('trainer', trainer);
 	setContext('lastSync', lastSync);
 	setContext('token', token);
 

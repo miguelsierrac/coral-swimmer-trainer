@@ -1,4 +1,4 @@
-export class GetAthlete {
+export class GetTrainer {
     _apiClient
 
     constructor(apiClient) {
@@ -6,8 +6,8 @@ export class GetAthlete {
     }
 
     async handle(id) {
-        let remote = await this._apiClient.get(`deportistas`, {'documento': id})
-        return this.map(remote.deportistas[0])
+        let remote = await this._apiClient.get(`entrenadores`, {'documento': id})
+        return this.map(remote.entrenadores[0])
     }
 
     map(remote) {

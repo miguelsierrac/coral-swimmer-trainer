@@ -1,5 +1,5 @@
 <script>
-	export let athlete;
+	export let trainer;
 	export let onLogOut;
 
 	function convertDateToUTC(date) {
@@ -31,7 +31,7 @@
 	<link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 </svelte:head>
 
-{#if athlete}
+{#if trainer}
 	<div
 		class="relative flex size-full min-h-screen flex-col bg-[#fcfaf8] justify-between group/design-root overflow-x-hidden"
 	>
@@ -50,13 +50,13 @@
 								CLUB CORAL SWIMMER
 							</p>
 							<p class="text-[#9c7849] text-base font-normal leading-normal text-center">
-								ID: {athlete.identification}
+								ID: {trainer.identification}
 							</p>
-							{#if expired(convertDateToUTC(new Date(athlete.expiration_date)))}
+							{#if expired(convertDateToUTC(new Date(trainer.expiration_date)))}
 								<p
 									class="text-[#9c7849] text-base text-red-600 font-bold leading-normal text-center"
 								>
-									Expiró {convertDateToUTC(new Date(athlete.expiration_date)).toLocaleDateString(
+									Expiró {convertDateToUTC(new Date(trainer.expiration_date)).toLocaleDateString(
 										'es-ES',
 										{ day: 'numeric', month: 'long', year: 'numeric' }
 									)}
@@ -64,7 +64,7 @@
 							{:else}
 								<p class="text-[#9c7849] text-base font-normal leading-normal text-center">
 									Valido hasta {convertDateToUTC(
-										new Date(athlete.expiration_date)
+										new Date(trainer.expiration_date)
 									).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}
 								</p>
 							{/if}
@@ -92,15 +92,15 @@
 					</svg>
 				</div>
 				<p class="text-[#1c150d] text-base font-normal leading-normal flex-1 truncate">
-					{athlete.forename}
-					{athlete.surname}
+					{trainer.forename}
+					{trainer.surname}
 				</p>
 			</div>
 			<div class="flex w-full justify-center grow bg-[#fcfaf8] @container p-4 px-28">
-				{#if athlete.photo}
+				{#if trainer.photo}
 					<div
 						class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl max-h-40 w-full"
-						style="background-image: url({athlete.photo});"
+						style="background-image: url({trainer.photo});"
 					></div>
 				{:else}
 					<div
@@ -140,7 +140,7 @@
 					</svg>
 				</div>
 				<p class="text-[#1c150d] text-base font-normal leading-normal flex-1 truncate">
-					Miembro desde {convertDateToUTC(new Date(athlete.start_date)).toLocaleDateString(
+					Miembro desde {convertDateToUTC(new Date(trainer.start_date)).toLocaleDateString(
 						'es-ES',
 						{ month: 'long', year: 'numeric' }
 					)}
@@ -166,14 +166,14 @@
 					</svg>
 				</div>
 				<p class="text-[#1c150d] text-base font-normal leading-normal flex-1 truncate">
-					{#if athlete.remaining_days >= 0}
-					Clases restantes: <b>{athlete.remaining_days}</b>
+					{#if trainer.remaining_days >= 0}
+					Clases restantes: <b>{trainer.remaining_days}</b>
 					{:else}
-					Clases restantes: <b>0 <span class="text-[#9c7849] text-base text-red-600">({athlete.remaining_days} extras)</span></b>
+					Clases restantes: <b>0 <span class="text-[#9c7849] text-base text-red-600">({trainer.remaining_days} extras)</span></b>
 					{/if}
 				</p>
 			</div>
-			{#if athlete.phone}
+			{#if trainer.phone}
 				<div class="flex items-center gap-4 bg-[#fcfaf8] px-4 min-h-14">
 					<div
 						class="text-[#1c150d] flex items-center justify-center rounded-lg bg-[#f4eee7] shrink-0 size-10"
@@ -194,7 +194,7 @@
 						</svg>
 					</div>
 					<p class="text-[#1c150d] text-base font-normal leading-normal flex-1 truncate">
-						Telefóno: {athlete.phone}
+						Telefóno: {trainer.phone}
 					</p>
 				</div>
 			{/if}

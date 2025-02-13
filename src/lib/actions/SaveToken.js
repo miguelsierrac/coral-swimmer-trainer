@@ -5,7 +5,7 @@ export class SaveToken {
         this._apiClient = apiClient
     }
 
-    async handle(athlete) {
-        await this._apiClient.post(`deportistas`, {"items": [ {"id": athlete.id, "token": athlete.token} ]})
+    async handle(trainer) {
+        await this._apiClient.post(`entrenadores`, {"items": [ {"id": trainer.id, "token": trainer.token} ]})
     }
 }

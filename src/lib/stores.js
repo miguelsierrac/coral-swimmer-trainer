@@ -1,6 +1,6 @@
 import { localStore } from "$lib/infrastructure/LocalStore.js";
 
-export const athlete = localStore("ATHLETE");
+export const trainer = localStore("TRAINER");
 
 export const lastSync = localStore("LAST_SYNC");
 

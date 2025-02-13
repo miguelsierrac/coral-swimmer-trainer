@@ -4,12 +4,12 @@
 
 	const provider = getContext('provider');
 	const redirect = getContext('redirect');
-	const athlete = getContext('athlete');
+	const trainer = getContext('trainer');
 	const lastSync = getContext('lastSync');
 	const token = getContext('token');
 
 	const onLogOut = () => {
-		$athlete = null;
+		$trainer = null;
 		$lastSync = null;
 	};
 
@@ -24,12 +24,12 @@
 	onMount(async () => {
 		let now = new Date();
 		console.log(now)
-		if ($athlete) {
+		if ($trainer) {
 			try {
-				$athlete = await provider.getAthlete.handle($athlete.identification);
-				if ($token && $athlete.token !== $token) {
-					$athlete.token = $token;
-					await provider.saveToken.handle($athlete);
+				$trainer = await provider.getTrainer.handle($trainer.identification);
+				if ($token && $trainer.token !== $token) {
+					$trainer.token = $token;
+					await provider.saveToken.handle($trainer);
 				}
 				$lastSync = new Date();
 			} catch (error) {
@@ -39,10 +39,10 @@
 	});
 
 	$: {
-		if (!$athlete) {
+		if (!$trainer) {
 			redirect('/');
 		}
 	}
 </script>
 
-<MemberCardScreen bind:athlete={$athlete} {onLogOut} />
+<MemberCardScreen bind:trainer={$trainer} {onLogOut} />

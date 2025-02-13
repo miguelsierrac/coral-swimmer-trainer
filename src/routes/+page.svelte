@@ -4,18 +4,18 @@
 
 	const redirect = getContext('redirect');
 	const provider = getContext('provider');
-	const athlete = getContext('athlete');
+	const trainer = getContext('trainer');
 	const lastSync = getContext('lastSync');
 
 	onMount(async () => {
-		if ($athlete) {
+		if ($trainer) {
 			redirect('/member_card');
 		}
 	});
 
 	const onSubmit = async (id) => {
-		let result = await provider.getAthlete.handle(id);
-		$athlete = result;
+		let result = await provider.getTrainer.handle(id);
+		$trainer = result;
 		$lastSync = new Date();
 		redirect('/member_card');
 	};
