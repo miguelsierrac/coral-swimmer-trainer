@@ -54,30 +54,28 @@
 		if (permissionGranted) {
 			console.log('Notification permission granted.');
 
-			// navigator.serviceWorker.register(base + '/firebase-messaging-sw.js').then((registration) => {
-			console.log('Messaging get token...');
-			getToken(messaging, {
-				// serviceWorkerRegistration: registration,
-				vapidKey:
-					'BIxDq1HszvHFhbBARVJcPokYfOFQo74ZAzq2LZCBVn2K740j0TnvCJMBAgHweAGIG5bPlJTfHcE9cdr_du4Gqc4'
-			})
-				.then((currentToken) => {
-					if (currentToken) {
-						// Send the token to your server and update the UI if necessary
-						// ...
-						console.log('Token available: ', currentToken);
-						$token = currentToken;
-					} else {
-						// Show permission request UI
-						console.log('No registration token available. Request permission to generate one.');
-						// ...
-					}
+			navigator.serviceWorker.register(base + '/firebase-messaging-sw.js').then((registration) => {
+				console.log('Messaging get token...');
+				getToken(messaging, {
+					serviceWorkerRegistration: registration,
+					vapidKey:
+						'BIxDq1HszvHFhbBARVJcPokYfOFQo74ZAzq2LZCBVn2K740j0TnvCJMBAgHweAGIG5bPlJTfHcE9cdr_du4Gqc4'
 				})
-				.catch((err) => {
-					console.log('An error occurred while retrieving token. ', err);
-					// ...
-				});
-			// });
+					.then((currentToken) => {
+						if (currentToken) {
+							// Send the token to your server and update the UI if necessary
+							// ...
+							console.log('Token available: ', currentToken);
+							$token = currentToken;
+						} else {
+							// Show permission request UI
+							console.log('No registration token available. Request permission to generate one.');
+						}
+					})
+					.catch((err) => {
+						console.log('An error occurred while retrieving token. ', err);
+					});
+			});
 
 			onMessage(messaging, (payload) => {
 				console.log('Message received. ', payload);
@@ -103,7 +101,7 @@
 					console.log('Notification error: ', error);
 				}
 
-				toast.push("<strong>" + notificationTitle + "</strong><br>" + notificationOptions.body, {
+				toast.push('<strong>' + notificationTitle + '</strong><br>' + notificationOptions.body, {
 					initial: 0
 				});
 			});
