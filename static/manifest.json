@@ -1,11 +1,11 @@
 {
     "background_color": "#ffffff",
     "theme_color": "#333333",
-    "name": "Deportista Coral Swimmer",
-    "short_name": "Deportista",
+    "name": "Coach Coral Swimmer",
+    "short_name": "Coach",
     "display": "standalone",
-    "start_url": "/coral-swimmer-athlete",
-    "scope": "/coral-swimmer-athlete",
+    "start_url": "/coral-swimmer-trainer",
+    "scope": "/coral-swimmer-tainer",
     "icons": [
       {
         "src": "logo_192.png",
